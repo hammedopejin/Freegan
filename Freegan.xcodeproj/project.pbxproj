@@ -8,20 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		0F9691741F3397C100802C57 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9691731F3397C100802C57 /* AppDelegate.swift */; };
-		0F9691761F3397C100802C57 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9691751F3397C100802C57 /* ViewController.swift */; };
+		0F9691761F3397C100802C57 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9691751F3397C100802C57 /* SignInVC.swift */; };
 		0F9691791F3397C100802C57 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F9691771F3397C100802C57 /* Main.storyboard */; };
 		0F96917B1F3397C100802C57 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F96917A1F3397C100802C57 /* Assets.xcassets */; };
 		0F96917E1F3397C100802C57 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F96917C1F3397C100802C57 /* LaunchScreen.storyboard */; };
+		0F9691861F339D9B00802C57 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0F9691851F339D9B00802C57 /* GoogleService-Info.plist */; };
+		BAA8F3B746CCD3AFF381FCB5 /* Pods_Freegan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1690BF996CD58D5B330B36D7 /* Pods_Freegan.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0F9691701F3397C100802C57 /* Freegan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Freegan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F9691731F3397C100802C57 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0F9691751F3397C100802C57 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0F9691751F3397C100802C57 /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
 		0F9691781F3397C100802C57 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0F96917A1F3397C100802C57 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0F96917D1F3397C100802C57 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0F96917F1F3397C100802C57 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0F9691851F339D9B00802C57 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		1690BF996CD58D5B330B36D7 /* Pods_Freegan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Freegan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E86A8EAB41CA0312971C0618 /* Pods-Freegan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Freegan.release.xcconfig"; path = "Pods/Target Support Files/Pods-Freegan/Pods-Freegan.release.xcconfig"; sourceTree = "<group>"; };
+		E958B4EAEC160AC98F9C1CF5 /* Pods-Freegan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Freegan.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Freegan/Pods-Freegan.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +35,42 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BAA8F3B746CCD3AFF381FCB5 /* Pods_Freegan.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F9015351F33A222004F96ED /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0F9015361F33A229004F96ED /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0F9015371F33A230004F96ED /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0F9691751F3397C100802C57 /* SignInVC.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		0F9691671F3397C100802C57 = {
 			isa = PBXGroup;
 			children = (
 				0F9691721F3397C100802C57 /* Freegan */,
 				0F9691711F3397C100802C57 /* Products */,
+				94CCF7279CF8A98BD167620F /* Pods */,
+				D8C224C17A03CC8C3967AF29 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +85,34 @@
 		0F9691721F3397C100802C57 /* Freegan */ = {
 			isa = PBXGroup;
 			children = (
+				0F9015351F33A222004F96ED /* Model */,
+				0F9015371F33A230004F96ED /* Controller */,
+				0F9015361F33A229004F96ED /* View */,
 				0F9691731F3397C100802C57 /* AppDelegate.swift */,
-				0F9691751F3397C100802C57 /* ViewController.swift */,
 				0F9691771F3397C100802C57 /* Main.storyboard */,
 				0F96917A1F3397C100802C57 /* Assets.xcassets */,
 				0F96917C1F3397C100802C57 /* LaunchScreen.storyboard */,
 				0F96917F1F3397C100802C57 /* Info.plist */,
+				0F9691851F339D9B00802C57 /* GoogleService-Info.plist */,
 			);
 			path = Freegan;
+			sourceTree = "<group>";
+		};
+		94CCF7279CF8A98BD167620F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E958B4EAEC160AC98F9C1CF5 /* Pods-Freegan.debug.xcconfig */,
+				E86A8EAB41CA0312971C0618 /* Pods-Freegan.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		D8C224C17A03CC8C3967AF29 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1690BF996CD58D5B330B36D7 /* Pods_Freegan.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +122,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0F9691821F3397C100802C57 /* Build configuration list for PBXNativeTarget "Freegan" */;
 			buildPhases = (
+				ED20326C64CCE31D5FAA6609 /* [CP] Check Pods Manifest.lock */,
 				0F96916C1F3397C100802C57 /* Sources */,
 				0F96916D1F3397C100802C57 /* Frameworks */,
 				0F96916E1F3397C100802C57 /* Resources */,
+				526926D058795DD16D2551BE /* [CP] Embed Pods Frameworks */,
+				2FCA8E20D901231C54A2A712 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -96,6 +150,7 @@
 				TargetAttributes = {
 					0F96916F1F3397C100802C57 = {
 						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -124,18 +179,67 @@
 			files = (
 				0F96917E1F3397C100802C57 /* LaunchScreen.storyboard in Resources */,
 				0F96917B1F3397C100802C57 /* Assets.xcassets in Resources */,
+				0F9691861F339D9B00802C57 /* GoogleService-Info.plist in Resources */,
 				0F9691791F3397C100802C57 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2FCA8E20D901231C54A2A712 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Freegan/Pods-Freegan-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		526926D058795DD16D2551BE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Freegan/Pods-Freegan-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ED20326C64CCE31D5FAA6609 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		0F96916C1F3397C100802C57 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F9691761F3397C100802C57 /* ViewController.swift in Sources */,
+				0F9691761F3397C100802C57 /* SignInVC.swift in Sources */,
 				0F9691741F3397C100802C57 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -267,13 +371,17 @@
 		};
 		0F9691831F3397C100802C57 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E958B4EAEC160AC98F9C1CF5 /* Pods-Freegan.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 87543A78RY;
 				INFOPLIST_FILE = Freegan/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.planetpeopleplatform.Freegan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -281,13 +389,17 @@
 		};
 		0F9691841F3397C100802C57 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E86A8EAB41CA0312971C0618 /* Pods-Freegan.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 87543A78RY;
 				INFOPLIST_FILE = Freegan/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.planetpeopleplatform.Freegan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -312,6 +424,7 @@
 				0F9691841F3397C100802C57 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
