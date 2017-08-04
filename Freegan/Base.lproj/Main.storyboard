@@ -106,7 +106,7 @@
                                         <rect key="frame" x="0.0" y="50" width="283" height="30"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.869140625" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NPY-nq-p02" customClass="FancyBtn" customModule="Freegan" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="100" width="283" height="30"/>
@@ -114,6 +114,9 @@
                                         <state key="normal" title="Sign In">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="signInTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FBP-iA-hbb"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VRn-aP-EEM" customClass="FancyBtn" customModule="Freegan" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="150" width="283" height="30"/>
@@ -162,6 +165,10 @@
                             <constraint firstAttribute="trailing" secondItem="YO2-t9-yHd" secondAttribute="trailing" id="xKA-C6-DSM"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="emailField" destination="nJ2-A0-hrh" id="QEI-Vp-CZu"/>
+                        <outlet property="pwdField" destination="ArR-Ii-uvc" id="y9p-wk-y1M"/>
+                    </connections>
                 </viewController>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Ynb-rL-mj7">
                     <rect key="frame" x="0.0" y="0.0" width="260" height="30"/>
