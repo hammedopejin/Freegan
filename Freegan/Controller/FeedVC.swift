@@ -75,7 +75,22 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         }
     }
     
-    
+    func postToFirebase(imgUrl: String) {
+        let post: Dictionary<String, AnyObject> = [
+            "description": captionField.text! as AnyObject,
+            "imageUrl": imgUrl as AnyObject,
+            "likes": 0 as AnyObject
+        ]
+        
+        let firebasePost = DataService.ds.REF_POSTS.childByAutoId()
+        firebasePost.setValue(post)
+        
+        captionField.text = ""
+        imageSelected = false
+        imageAdd.image = UIImage(named: "add-image")
+        
+        tableView.reloadData()
+    }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
@@ -90,53 +105,39 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     @IBAction func addImageTapped(_ sender: AnyObject) {
         present(imagePicker, animated: true, completion: nil)
     }
-//
-//    @IBAction func postBtnTapped(_ sender: AnyObject) {
-//        guard let caption = captionField.text, caption != "" else {
-//            print("HAMMED: Caption must be entered")
-//            return
-//        }
-//        guard let img = imageAdd.image, imageSelected == true else {
-//            print("HAMMED: An image must be selected")
-//            return
-//        }
-//
-//        if let imgData = UIImageJPEGRepresentation(img, 0.2) {
-//
-//            let imgUid = NSUUID().uuidString
-//            let metadata = StorageMetadata()
-//            metadata.contentType = "image/jpeg"
-//
-//            DataService.ds.REF_POST_IMAGES.child(imgUid).putData(imgData, metadata: metadata) { (metadata, error) in
-//                if error != nil {
-//                    print("HAMMED: Unable to upload image to Firebasee torage")
-//                } else {
-//                    print("HAMMED: Successfully uploaded image to Firebase storage")
-//                    let downloadURL = metadata?.downloadURL()?.absoluteString
-//                    if let url = downloadURL {
-//                        self.postToFirebase(imgUrl: url)
-//                    }
-//                }
-//            }
-//        }
-//    }
     
-    func postToFirebase(imgUrl: String) {
-        let post: Dictionary<String, AnyObject> = [
-            "caption": captionField.text! as AnyObject,
-            "imageUrl": imgUrl as AnyObject,
-            "likes": 0 as AnyObject
-        ]
+    @IBAction func postBtnTapped(_ sender: Any) {
+        guard let caption = captionField.text, caption != "" else {
+            print("HAMMED: Caption must be entered")
+            return
+        }
+        guard let img = imageAdd.image, imageSelected == true else {
+            print("HAMMED: An image must be selected")
+            return
+        }
         
-        let firebasePost = DataService.ds.REF_POSTS.childByAutoId()
-        firebasePost.setValue(post)
-        
-        captionField.text = ""
-        imageSelected = false
-        imageAdd.image = UIImage(named: "add-image")
-        
-        tableView.reloadData()
+        if let imgData = UIImageJPEGRepresentation(img, 0.2) {
+            
+            let imgUid = NSUUID().uuidString
+            let metadata = StorageMetadata()
+            metadata.contentType = "image/jpeg"
+            
+            DataService.ds.REF_POST_IMAGES.child(imgUid).putData(imgData, metadata: metadata) { (metadata, error) in
+                if error != nil {
+                    print("HAMMED: Unable to upload image to Firebasee torage")
+                } else {
+                    print("HAMMED: Successfully uploaded image to Firebase storage")
+                    let downloadURL = metadata?.downloadURL()?.absoluteString
+                    if let url = downloadURL {
+                        self.postToFirebase(imgUrl: url)
+                    }
+                }
+            }
+        }
     }
+    
+    
+    
     
     @IBAction func signOutTapped(_ sender: AnyObject) {
         

@@ -380,6 +380,9 @@
                                                     <constraint firstAttribute="height" constant="49" id="lGZ-Eh-dPj"/>
                                                 </constraints>
                                                 <state key="normal" image="add-post"/>
+                                                <connections>
+                                                    <action selector="postBtnTapped:" destination="OKG-UO-FcI" eventType="touchUpInside" id="WfC-hZ-3Df"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
