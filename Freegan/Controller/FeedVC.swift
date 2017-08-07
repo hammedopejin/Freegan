@@ -19,7 +19,6 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     
     var posts = [Post]()
     var imagePicker: UIImagePickerController!
-    //static var imageCache: Cache<NSString, UIImage> = Cache()
     static var imageCache: NSCache<NSString, UIImage> = NSCache()
     var imageSelected = false
     
