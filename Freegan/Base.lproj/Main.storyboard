@@ -363,6 +363,9 @@
                                                     <constraint firstAttribute="height" constant="49" id="Z75-3j-Jca"/>
                                                     <constraint firstAttribute="width" constant="49" id="g9p-bw-Tqr"/>
                                                 </constraints>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="yG1-bQ-XQi" appends="YES" id="Me9-tX-p78"/>
+                                                </connections>
                                             </imageView>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Add a caption" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IZs-BZ-zel" customClass="FancyField" customModule="Freegan" customModuleProvider="target">
                                                 <rect key="frame" x="59" y="0.0" width="280" height="49"/>
@@ -433,6 +436,11 @@
                 <tapGestureRecognizer id="wql-dr-gr9">
                     <connections>
                         <action selector="signOutTapped:" destination="OKG-UO-FcI" id="83v-ZJ-kEh"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="yG1-bQ-XQi">
+                    <connections>
+                        <action selector="addImageTapped:" destination="OKG-UO-FcI" id="5I5-m4-aJx"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>

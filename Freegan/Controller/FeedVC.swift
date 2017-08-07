@@ -88,9 +88,9 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         imagePicker.dismiss(animated: true, completion: nil)
     }
     
-//    @IBAction func addImageTapped(_ sender: AnyObject) {
-//        present(imagePicker, animated: true, completion: nil)
-//    }
+    @IBAction func addImageTapped(_ sender: AnyObject) {
+        present(imagePicker, animated: true, completion: nil)
+    }
 //
 //    @IBAction func postBtnTapped(_ sender: AnyObject) {
 //        guard let caption = captionField.text, caption != "" else {
