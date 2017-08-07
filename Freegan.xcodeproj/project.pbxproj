@@ -12,6 +12,11 @@
 		0F90153E1F340D46004F96ED /* RoundBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F90153D1F340D46004F96ED /* RoundBtn.swift */; };
 		0F9015401F34109F004F96ED /* FancyField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F90153F1F34109E004F96ED /* FancyField.swift */; };
 		0F9015421F341180004F96ED /* FancyBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9015411F341180004F96ED /* FancyBtn.swift */; };
+		0F9015441F34EFCD004F96ED /* FeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9015431F34EFCD004F96ED /* FeedVC.swift */; };
+		0F9015461F3526AA004F96ED /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9015451F3526AA004F96ED /* PostCell.swift */; };
+		0F9015491F3530D2004F96ED /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9015481F3530D2004F96ED /* DataService.swift */; };
+		0F90154B1F3681F1004F96ED /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F90154A1F3681F1004F96ED /* Post.swift */; };
+		0F90154D1F37BCBB004F96ED /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F90154C1F37BCBA004F96ED /* CircleView.swift */; };
 		0F9691741F3397C100802C57 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9691731F3397C100802C57 /* AppDelegate.swift */; };
 		0F9691761F3397C100802C57 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9691751F3397C100802C57 /* SignInVC.swift */; };
 		0F9691791F3397C100802C57 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F9691771F3397C100802C57 /* Main.storyboard */; };
@@ -27,6 +32,11 @@
 		0F90153D1F340D46004F96ED /* RoundBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoundBtn.swift; path = "../../../../Downloads/devslopes-social-final-source-code/devslopes-social/RoundBtn.swift"; sourceTree = "<group>"; };
 		0F90153F1F34109E004F96ED /* FancyField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FancyField.swift; path = "../../../../Downloads/devslopes-social-final-source-code/devslopes-social/FancyField.swift"; sourceTree = "<group>"; };
 		0F9015411F341180004F96ED /* FancyBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FancyBtn.swift; path = "../../../../Downloads/devslopes-social-final-source-code/devslopes-social/FancyBtn.swift"; sourceTree = "<group>"; };
+		0F9015431F34EFCD004F96ED /* FeedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedVC.swift; sourceTree = "<group>"; };
+		0F9015451F3526AA004F96ED /* PostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostCell.swift; path = ../../../Fakebook/Fakebook/View/PostCell.swift; sourceTree = "<group>"; };
+		0F9015481F3530D2004F96ED /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataService.swift; path = ../../../Fakebook/Fakebook/Services/DataService.swift; sourceTree = "<group>"; };
+		0F90154A1F3681F1004F96ED /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Post.swift; path = ../../../Fakebook/Fakebook/Model/Post.swift; sourceTree = "<group>"; };
+		0F90154C1F37BCBA004F96ED /* CircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CircleView.swift; path = ../../../Fakebook/Fakebook/View/CircleView.swift; sourceTree = "<group>"; };
 		0F9691701F3397C100802C57 /* Freegan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Freegan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F9691731F3397C100802C57 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0F9691751F3397C100802C57 /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
@@ -55,6 +65,7 @@
 		0F9015351F33A222004F96ED /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0F90154A1F3681F1004F96ED /* Post.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -62,7 +73,9 @@
 		0F9015361F33A229004F96ED /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0F9015451F3526AA004F96ED /* PostCell.swift */,
 				0F90153F1F34109E004F96ED /* FancyField.swift */,
+				0F90154C1F37BCBA004F96ED /* CircleView.swift */,
 				0F9015411F341180004F96ED /* FancyBtn.swift */,
 				0F90153D1F340D46004F96ED /* RoundBtn.swift */,
 				0F9015381F34096A004F96ED /* FancyView.swift */,
@@ -74,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				0F9691751F3397C100802C57 /* SignInVC.swift */,
+				0F9015431F34EFCD004F96ED /* FeedVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -84,6 +98,14 @@
 				0F90153B1F340ABC004F96ED /* Constants.swift */,
 			);
 			path = Util;
+			sourceTree = "<group>";
+		};
+		0F9015471F3530B8004F96ED /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				0F9015481F3530D2004F96ED /* DataService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		0F9691671F3397C100802C57 = {
@@ -107,6 +129,7 @@
 		0F9691721F3397C100802C57 /* Freegan */ = {
 			isa = PBXGroup;
 			children = (
+				0F9015471F3530B8004F96ED /* Services */,
 				0F90153A1F3409D7004F96ED /* Util */,
 				0F9015351F33A222004F96ED /* Model */,
 				0F9015371F33A230004F96ED /* Controller */,
@@ -173,7 +196,7 @@
 				TargetAttributes = {
 					0F96916F1F3397C100802C57 = {
 						CreatedOnToolsVersion = 9.0;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -262,13 +285,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F90154D1F37BCBB004F96ED /* CircleView.swift in Sources */,
 				0F9015401F34109F004F96ED /* FancyField.swift in Sources */,
+				0F90154B1F3681F1004F96ED /* Post.swift in Sources */,
 				0F9691761F3397C100802C57 /* SignInVC.swift in Sources */,
 				0F90153E1F340D46004F96ED /* RoundBtn.swift in Sources */,
 				0F9691741F3397C100802C57 /* AppDelegate.swift in Sources */,
+				0F9015441F34EFCD004F96ED /* FeedVC.swift in Sources */,
+				0F9015461F3526AA004F96ED /* PostCell.swift in Sources */,
 				0F9015391F34096A004F96ED /* FancyView.swift in Sources */,
 				0F90153C1F340ABC004F96ED /* Constants.swift in Sources */,
 				0F9015421F341180004F96ED /* FancyBtn.swift in Sources */,
+				0F9015491F3530D2004F96ED /* DataService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -403,8 +431,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 87543A78RY;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Freegan/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.planetpeopleplatform.Freegan;
@@ -421,8 +449,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 87543A78RY;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Freegan/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.planetpeopleplatform.Freegan;

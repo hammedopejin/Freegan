@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  SignInVC.swift
 //  Freegan
 //
 //  Created by Hammed Opejin on 8/3/17.
@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import SwiftKeychainWrapper
 
 class SignInVC: UIViewController {
     @IBOutlet weak var emailField: FancyField!
@@ -16,6 +17,13 @@ class SignInVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if let _ = KeychainWrapper.defaultKeychainWrapper.string(forKey: KEY_UID){
+            print("HAMMED: ID found in keychain")
+            performSegue(withIdentifier: "goToFeed", sender: nil)
+        }
     }
 
     
@@ -26,10 +34,10 @@ class SignInVC: UIViewController {
                 print("HAMMED: Unable to authenticate with Firebase - \(error)")
             } else {
                 print("HAMMED: Successfully authenticated with Firebase")
-//                if let user = user {
-//                    let userData = ["provider": credential.provider]
-//                    self.completeSignIn(id: user.uid, userData: userData)
-//                }
+                if let user = user {
+                    let userData = ["provider": credential.provider]
+                    self.completeSignIn(id: user.uid, userData: userData)
+                }
             }
         })
     }
@@ -41,7 +49,7 @@ class SignInVC: UIViewController {
                     print("HAMMED: Email user authenticated with Firebase")
                     if let user = user {
                         let userData = ["provider": user.providerID]
-                        //self.completeSignIn(id: user.uid, userData: userData)
+                        self.completeSignIn(id: user.uid, userData: userData)
                     }
                 } else {
                     Auth.auth().createUser(withEmail: email, password: pwd, completion: { (user, error) in
@@ -51,7 +59,7 @@ class SignInVC: UIViewController {
                             print("HAMMED: Successfully authenticated with Firebase")
                             if let user = user {
                                 let userData = ["provider": user.providerID]
-                                //self.completeSignIn(id: user.uid, userData: userData)
+                                self.completeSignIn(id: user.uid, userData: userData)
                             }
                         }
                     })
@@ -60,13 +68,12 @@ class SignInVC: UIViewController {
         }
     }
     
-//    func completeSignIn(id: String, userData: Dictionary<String, String>) {
-//        DataService.ds.createFirbaseDBUser(uid: id, userData: userData)
-//        //let keychainResult = KeychainWrapper.setString(id, forKey: KEY_UID)
-//        //let keychainResult = KeychainWrapper.defaultKeychainWrapper.set(id, forKey: KEY_UID)
-//        print("HAMMED: Data saved to keychain \(keychainResult)")
-//        performSegue(withIdentifier: "goToFeed", sender: nil)
-//    }
+    func completeSignIn(id: String, userData: Dictionary<String, String>) {
+        DataService.ds.createFirbaseDBUser(uid: id, userData: userData)
+        let keychainResult = KeychainWrapper.defaultKeychainWrapper.set(id, forKey: KEY_UID)
+        print("HAMMED: Data saved to keychain \(keychainResult)")
+        performSegue(withIdentifier: "goToFeed", sender: nil)
+    }
     
 }
 

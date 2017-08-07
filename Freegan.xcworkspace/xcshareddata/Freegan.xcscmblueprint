@@ -1,0 +1,37 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "888529CB760F8FDBDE276E7E5A22268867609551",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "888529CB760F8FDBDE276E7E5A22268867609551" : 9223372036854775807,
+    "B0646478FE580BEF1B3DB928834B2AF32A2F79AC" : 9223372036854775807,
+    "13B18073230E326D909BC65235860E2698C48B84" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "0EA777C3-47A0-4774-A898-A24D3B2048E9",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "888529CB760F8FDBDE276E7E5A22268867609551" : "Freegan\/",
+    "B0646478FE580BEF1B3DB928834B2AF32A2F79AC" : "..\/Downloads\/devslopes-social-final-source-code",
+    "13B18073230E326D909BC65235860E2698C48B84" : "Fakebook\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Freegan",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Freegan.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/hammedopejin\/Fakebook.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "13B18073230E326D909BC65235860E2698C48B84"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/hammedopejin\/Freegan.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "888529CB760F8FDBDE276E7E5A22268867609551"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/JessRascal\/devslopes-social.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "B0646478FE580BEF1B3DB928834B2AF32A2F79AC"
+    }
+  ]
+}
