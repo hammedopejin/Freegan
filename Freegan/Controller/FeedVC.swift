@@ -18,9 +18,13 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     
     
     var posts = [Post]()
+    var user: User?
     var imagePicker: UIImagePickerController!
     static var imageCache: NSCache<NSString, UIImage> = NSCache()
     var imageSelected = false
+    var profileImgUrl: String!
+    var userName: String!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,11 +46,29 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
                     if let postDict = snap.value as? Dictionary<String, AnyObject> {
                         let key = snap.key
                         let post = Post(postKey: key, postData: postDict)
+                        
                         self.posts.append(post)
                     }
                 }
             }
             self.tableView.reloadData()
+        })
+        
+        
+        let firebaseUser = DataService.ds.REF_USER_CURRENT
+        let firebaseUserName = firebaseUser.child("userName")
+        let firebaseProfileImgUrl = firebaseUser.child("userImgUrl")
+        firebaseUserName.observeSingleEvent(of: .value, with: { (snapshot) in
+            if let value = snapshot.value as? String{
+                self.userName = value
+                print("Hammed:  userName: \(self.userName!)")
+            }
+        })
+        firebaseProfileImgUrl.observeSingleEvent(of: .value, with: { (snapshot) in
+            if let value = snapshot.value as? String{
+                self.profileImgUrl = value
+                print("Hammed:  userName: \(self.profileImgUrl!)")
+            }
         })
     }
     
@@ -64,8 +86,8 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell") as? PostCell {
             
-            if let img = FeedVC.imageCache.object(forKey: post.imageUrl as NSString) {
-                cell.configureCell(post: post, img: img)
+            if let img = FeedVC.imageCache.object(forKey: post.imageUrl as NSString), let img2 = FeedVC.imageCache.object(forKey: post.profileImgUrl as NSString) {
+                cell.configureCell(post: post, img: img, img2: img2)
             } else {
                 cell.configureCell(post: post)
             }
@@ -75,11 +97,18 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         }
     }
     
+    
     func postToFirebase(imgUrl: String) {
+        
+        
+        
+    
         let post: Dictionary<String, AnyObject> = [
             "description": captionField.text! as AnyObject,
             "imageUrl": imgUrl as AnyObject,
-            "likes": 0 as AnyObject
+            "likes": 0 as AnyObject,
+            "profileImgUrl": profileImgUrl! as AnyObject,
+            "userName": self.userName! as AnyObject
         ]
         
         let firebasePost = DataService.ds.REF_POSTS.childByAutoId()

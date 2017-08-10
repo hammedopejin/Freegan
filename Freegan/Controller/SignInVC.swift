@@ -52,8 +52,8 @@ class SignInVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         })
     }
     
-    func completeSignIn(id: String, userData: Dictionary<String, String>) {
-        DataService.ds.createFirbaseDBUser(uid: id, userData: userData)
+    func completeSignIn(id: String, userData: Dictionary<String, Any>) {
+        DataService.ds.createFirbaseDBUser(uid: id, userData: userData as Dictionary<String, AnyObject>)
         let keychainResult = KeychainWrapper.defaultKeychainWrapper.set(id, forKey: KEY_UID)
         print("HAMMED: Data saved to keychain \(keychainResult)")
         performSegue(withIdentifier: "goToFeed", sender: nil)
@@ -75,8 +75,8 @@ class SignInVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
                         } else {
                             print("HAMMED: Successfully authenticated with Firebase")
                             if let user = user {
-                                let userData = ["provider": user.providerID]
-                                self.completeSignIn(id: user.uid, userData: userData)
+                                let userData = ["provider": user.providerID, "userName": self.userNameField.text ?? "username"] as [String : Any]
+                                self.completeSignIn(id: user.uid, userData: userData as! Dictionary<String, String>)
                             }
                         }
                     })
@@ -92,13 +92,37 @@ class SignInVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
                         } else {
                             print("HAMMED: Successfully authenticated with Firebase")
                             if let user = user {
-                                let userData = ["provider": user.providerID]
-                                self.completeSignIn(id: user.uid, userData: userData)
+                                
+                                if let imgData = UIImageJPEGRepresentation(self.userImg.image!, 0.2) {
+                                    
+                                    let imgUid = NSUUID().uuidString
+                                    let metadata = StorageMetadata()
+                                    metadata.contentType = "image/jpeg"
+                                    
+                                    DataService.ds.REF_USER_IMAGES.child(imgUid).putData(imgData, metadata: metadata) { (metadata, error) in
+                                        if error != nil {
+                                            print("HAMMED: Unable to upload image to Firebasee torage")
+                                        } else {
+                                            print("HAMMED: Successfully uploaded image to Firebase storage")
+                                            let downloadURL = metadata?.downloadURL()?.absoluteString
+                                            if let url = downloadURL {
+                                                if self.userNameField.text == nil{ self.userNameField.text = "New User" }
+                                                let userData = ["provider": user.providerID, "userImgUrl": url, "userName": self.userNameField.text!] as [String : Any]
+                                                self.completeSignIn(id: user.uid, userData: userData)
+                                            }
+                                        }
+                                    }
+                                }
+                                
                             }
                         }
+                        
                     })
                 }
+        
     }
+    
+    
     
     @IBAction func selectImg(_ sender: Any) {
         present(imagePicker, animated: true, completion: nil)
