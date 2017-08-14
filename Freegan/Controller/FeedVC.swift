@@ -12,11 +12,12 @@ import SwiftKeychainWrapper
 
 class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    @IBOutlet weak var userImage: CircleView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var imageAdd: CircleView!
     @IBOutlet weak var captionField: FancyField!
     
-    
+    let firebaseUser = DataService.ds.REF_USER_CURRENT
     var posts = [Post]()
     var user: User?
     var imagePicker: UIImagePickerController!
@@ -24,6 +25,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     var imageSelected = false
     var profileImgUrl: String!
     var userName: String!
+    var userImgUrl: String!
     
     
     override func viewDidLoad() {
@@ -54,8 +56,6 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
             self.tableView.reloadData()
         })
         
-        
-        let firebaseUser = DataService.ds.REF_USER_CURRENT
         let firebaseUserName = firebaseUser.child("userName")
         let firebaseProfileImgUrl = firebaseUser.child("userImgUrl")
         firebaseUserName.observeSingleEvent(of: .value, with: { (snapshot) in
@@ -67,9 +67,45 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         firebaseProfileImgUrl.observeSingleEvent(of: .value, with: { (snapshot) in
             if let value = snapshot.value as? String{
                 self.profileImgUrl = value
-                print("Hammed:  userName: \(self.profileImgUrl!)")
+                print("Hammed:  profileImg: \(self.profileImgUrl!)")
+                self.loadUserImg()
             }
         })
+        
+//        let firebaseUserImg = firebaseUser.child("userImgUrl")
+//        firebaseUserImg.observeSingleEvent(of: .value, with: { (snapshot) in
+//            if let value = snapshot.value as? String{
+//                self.userImgUrl = value
+//
+//            }
+//            self.userImage.reloadInputViews()
+//        })
+//
+        
+        
+        
+    }
+    
+    func loadUserImg() {
+        if self.profileImgUrl != nil{
+            let ref = Storage.storage().reference(forURL: self.profileImgUrl!)
+            ref.getData(maxSize: 2 * 1024 * 1024, completion: { (data, error) in
+                if error != nil {
+                    print("HAMMED: Unable to download image from Firebase storage")
+                } else {
+                    print("HAMMED: Image downloaded from Firebase storage, goood newwwws")
+                    if let imgData = data {
+                        if let img = UIImage(data: imgData) {
+                            self.userImage.image = img
+                            // FeedVC.imageCache.setObject(img, forKey: self.userImage as NSString)
+                            
+                        }
+                    }
+                }
+            })
+        }else{
+            print("HAMMED: Image downloaded from Firebase storage, bd newwwws")
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
