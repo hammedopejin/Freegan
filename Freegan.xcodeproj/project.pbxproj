@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		0F07260F1F3AAEE800EE805C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F07260E1F3AAEE800EE805C /* User.swift */; };
+		0F2517201F423BE40085D1E8 /* ContactGvVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F25171F1F423BE40085D1E8 /* ContactGvVC.swift */; };
+		0F2517221F4240BD0085D1E8 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2517211F4240BD0085D1E8 /* ProfileVC.swift */; };
+		0F2517241F42985A0085D1E8 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2517231F42985A0085D1E8 /* Chat.swift */; };
+		0F2517261F43884B0085D1E8 /* TVCChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2517251F43884B0085D1E8 /* TVCChat.swift */; };
 		0F9015391F34096A004F96ED /* FancyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9015381F34096A004F96ED /* FancyView.swift */; };
 		0F90153C1F340ABC004F96ED /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F90153B1F340ABC004F96ED /* Constants.swift */; };
 		0F90153E1F340D46004F96ED /* RoundBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F90153D1F340D46004F96ED /* RoundBtn.swift */; };
@@ -29,6 +33,10 @@
 
 /* Begin PBXFileReference section */
 		0F07260E1F3AAEE800EE805C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		0F25171F1F423BE40085D1E8 /* ContactGvVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactGvVC.swift; sourceTree = "<group>"; };
+		0F2517211F4240BD0085D1E8 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		0F2517231F42985A0085D1E8 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
+		0F2517251F43884B0085D1E8 /* TVCChat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TVCChat.swift; path = ../../../../Downloads/ChatApp/ChatApp/TVCChat.swift; sourceTree = "<group>"; };
 		0F9015381F34096A004F96ED /* FancyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FancyView.swift; path = "../../../../Downloads/devslopes-social-final-source-code/devslopes-social/FancyView.swift"; sourceTree = "<group>"; };
 		0F90153B1F340ABC004F96ED /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		0F90153D1F340D46004F96ED /* RoundBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoundBtn.swift; path = "../../../../Downloads/devslopes-social-final-source-code/devslopes-social/RoundBtn.swift"; sourceTree = "<group>"; };
@@ -69,6 +77,7 @@
 			children = (
 				0F90154A1F3681F1004F96ED /* Post.swift */,
 				0F07260E1F3AAEE800EE805C /* User.swift */,
+				0F2517231F42985A0085D1E8 /* Chat.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -77,6 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				0F9015451F3526AA004F96ED /* PostCell.swift */,
+				0F2517251F43884B0085D1E8 /* TVCChat.swift */,
 				0F90153F1F34109E004F96ED /* FancyField.swift */,
 				0F90154C1F37BCBA004F96ED /* CircleView.swift */,
 				0F9015411F341180004F96ED /* FancyBtn.swift */,
@@ -91,6 +101,8 @@
 			children = (
 				0F9691751F3397C100802C57 /* SignInVC.swift */,
 				0F9015431F34EFCD004F96ED /* FeedVC.swift */,
+				0F25171F1F423BE40085D1E8 /* ContactGvVC.swift */,
+				0F2517211F4240BD0085D1E8 /* ProfileVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -288,10 +300,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F2517221F4240BD0085D1E8 /* ProfileVC.swift in Sources */,
 				0F07260F1F3AAEE800EE805C /* User.swift in Sources */,
 				0F90154D1F37BCBB004F96ED /* CircleView.swift in Sources */,
 				0F9015401F34109F004F96ED /* FancyField.swift in Sources */,
+				0F2517261F43884B0085D1E8 /* TVCChat.swift in Sources */,
 				0F90154B1F3681F1004F96ED /* Post.swift in Sources */,
+				0F2517241F42985A0085D1E8 /* Chat.swift in Sources */,
 				0F9691761F3397C100802C57 /* SignInVC.swift in Sources */,
 				0F90153E1F340D46004F96ED /* RoundBtn.swift in Sources */,
 				0F9691741F3397C100802C57 /* AppDelegate.swift in Sources */,
@@ -300,6 +315,7 @@
 				0F9015391F34096A004F96ED /* FancyView.swift in Sources */,
 				0F90153C1F340ABC004F96ED /* Constants.swift in Sources */,
 				0F9015421F341180004F96ED /* FancyBtn.swift in Sources */,
+				0F2517201F423BE40085D1E8 /* ContactGvVC.swift in Sources */,
 				0F9015491F3530D2004F96ED /* DataService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -20,6 +20,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     let firebaseUser = DataService.ds.REF_USER_CURRENT
     var posts = [Post]()
     var user: User?
+    var postKey: String?
     var imagePicker: UIImagePickerController!
     static var imageCache: NSCache<NSString, UIImage> = NSCache()
     var imageSelected = false
@@ -48,6 +49,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
                     if let postDict = snap.value as? Dictionary<String, AnyObject> {
                         let key = snap.key
                         let post = Post(postKey: key, postData: postDict)
+                        self.postKey = key
                         
                         self.posts.append(post)
                     }
@@ -72,22 +74,15 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
             }
         })
         
-//        let firebaseUserImg = firebaseUser.child("userImgUrl")
-//        firebaseUserImg.observeSingleEvent(of: .value, with: { (snapshot) in
-//            if let value = snapshot.value as? String{
-//                self.userImgUrl = value
-//
-//            }
-//            self.userImage.reloadInputViews()
-//        })
-//
-        
-        
         
     }
     
     func loadUserImg() {
         if self.profileImgUrl != nil{
+            let img = FeedVC.imageCache.object(forKey: self.profileImgUrl as NSString)
+            if img != nil{
+              self.userImage.image = img
+            }else{
             let ref = Storage.storage().reference(forURL: self.profileImgUrl!)
             ref.getData(maxSize: 2 * 1024 * 1024, completion: { (data, error) in
                 if error != nil {
@@ -97,12 +92,13 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
                     if let imgData = data {
                         if let img = UIImage(data: imgData) {
                             self.userImage.image = img
-                            // FeedVC.imageCache.setObject(img, forKey: self.userImage as NSString)
-                            
+                            FeedVC.imageCache.setObject(img, forKey: self.profileImgUrl as NSString)
+
                         }
                     }
                 }
             })
+        }
         }else{
             print("HAMMED: Image downloaded from Firebase storage, bd newwwws")
         }
@@ -136,14 +132,12 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     
     func postToFirebase(imgUrl: String) {
         
-        
-        
-    
+
         let post: Dictionary<String, AnyObject> = [
             "description": captionField.text! as AnyObject,
             "imageUrl": imgUrl as AnyObject,
             "likes": 0 as AnyObject,
-            "profileImgUrl": profileImgUrl! as AnyObject,
+            "profileImgUrl": self.profileImgUrl! as AnyObject,
             "userName": self.userName! as AnyObject
         ]
         
@@ -203,6 +197,20 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     
     
     
+    @IBAction func contactGvTapped(_ sender: Any) {
+        
+        performSegue(withIdentifier: "goToContactGv", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToContactGv" {
+            
+            if let dis = segue.destination as? ContactGvVC {
+                dis.userName = self.userName
+                dis.postKey = self.postKey
+            }
+        }
+    }
     
     @IBAction func signOutTapped(_ sender: AnyObject) {
         
@@ -212,6 +220,10 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         performSegue(withIdentifier: "goToSignIn", sender: nil)
     }
     
+    @IBAction func goToProfileTapped(_ sender: Any) {
+        
+        performSegue(withIdentifier: "goToProfile", sender: nil)
+    }
     
 }
 

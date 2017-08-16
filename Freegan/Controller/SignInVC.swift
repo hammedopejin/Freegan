@@ -54,6 +54,7 @@ class SignInVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     
     func completeSignIn(id: String, userData: Dictionary<String, Any>) {
         DataService.ds.createFirbaseDBUser(uid: id, userData: userData as Dictionary<String, AnyObject>)
+        //Load User Info/Data
         let keychainResult = KeychainWrapper.defaultKeychainWrapper.set(id, forKey: KEY_UID)
         print("HAMMED: Data saved to keychain \(keychainResult)")
         performSegue(withIdentifier: "goToFeed", sender: nil)
