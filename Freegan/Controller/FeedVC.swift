@@ -49,7 +49,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
                     if let postDict = snap.value as? Dictionary<String, AnyObject> {
                         let key = snap.key
                         let post = Post(postKey: key, postData: postDict)
-                        self.postKey = key
+                        
                         
                         self.posts.append(post)
                     }
@@ -123,6 +123,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
             } else {
                 cell.configureCell(post: post)
             }
+            self.postKey = post.postKey
             return cell
         } else {
             return PostCell()

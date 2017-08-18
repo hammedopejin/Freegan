@@ -15,6 +15,8 @@ class ContactGvVC: UIViewController,UITableViewDelegate, UITableViewDataSource {
     var postKey:String?
     var listOfChatInfo = [Chat]()
     
+    @IBOutlet weak var caption: UITextView!
+    @IBOutlet weak var postImage: UIImageView!
     @IBOutlet weak var txtChatText: UITextField!
     @IBOutlet weak var laChatList: UITableView!
     override func viewDidLoad() {
@@ -23,6 +25,49 @@ class ContactGvVC: UIViewController,UITableViewDelegate, UITableViewDataSource {
         self.loadChatRoom()
         laChatList.delegate = self
         laChatList.dataSource = self
+        
+        DataService.ds.REF_POSTS.child(self.postKey!).observe(.value, with: { (snapshot) in
+            
+            
+            
+            if let snapshot = snapshot.children.allObjects as? [DataSnapshot] {
+                for snap in snapshot {
+                    
+                    
+                    if let postDict = snap.value as? String {
+                        if snap.key == "description"{
+                            self.caption.text = snap.value as! String
+                        }
+                        if snap.key == "imageUrl"{
+                            self.loadImg(imgUrl: snap.value as! String)
+                        }
+                        
+                        
+                    }
+               }
+            }
+                    
+        })
+        
+    }
+    
+    
+    func loadImg(imgUrl: String) {
+                let ref = Storage.storage().reference(forURL: imgUrl)
+                ref.getData(maxSize: 2 * 1024 * 1024, completion: { (data, error) in
+                    if error != nil {
+                        print("HAMMED: Unable to download image from Firebase storage")
+                    } else {
+                        print("HAMMED: Image downloaded from Firebase storage, goood newwwws")
+                        if let imgData = data {
+                            if let img = UIImage(data: imgData) {
+                                self.postImage.image = img
+                                
+                            }
+                        }
+                    }
+                })
+            
     }
     
     
@@ -74,7 +119,7 @@ class ContactGvVC: UIViewController,UITableViewDelegate, UITableViewDataSource {
                     self.laChatList.reloadData()
                     let indexpath = IndexPath(row: self.listOfChatInfo.count-1, section: 0)
                     
-                    self.laChatList.scrollToRow(at: indexpath, at: .bottom, animated: true)
+                   // self.laChatList.scrollToRow(at: indexpath, at: .bottom, animated: true)
                     
                 }
                 
