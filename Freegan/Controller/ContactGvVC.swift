@@ -15,6 +15,8 @@ class ContactGvVC: UIViewController,UITableViewDelegate, UITableViewDataSource {
     var postKey:String?
     var listOfChatInfo = [Chat]()
     
+    @IBOutlet weak var giverUsername: UILabel!
+    @IBOutlet weak var giverImg: CircleView!
     @IBOutlet weak var caption: UITextView!
     @IBOutlet weak var postImage: UIImageView!
     @IBOutlet weak var txtChatText: UITextField!
@@ -39,7 +41,13 @@ class ContactGvVC: UIViewController,UITableViewDelegate, UITableViewDataSource {
                             self.caption.text = snap.value as! String
                         }
                         if snap.key == "imageUrl"{
-                            self.loadImg(imgUrl: snap.value as! String)
+                            self.loadImg(imgUrl: snap.value as! String, imagePresent: self.postImage!)
+                        }
+                        if snap.key == "userName"{
+                            self.giverUsername.text = snap.value as! String
+                        }
+                        if snap.key == "profileImgUrl"{
+                            self.loadImg(imgUrl: snap.value as! String, imagePresent: self.giverImg!)
                         }
                         
                         
@@ -52,7 +60,7 @@ class ContactGvVC: UIViewController,UITableViewDelegate, UITableViewDataSource {
     }
     
     
-    func loadImg(imgUrl: String) {
+    func loadImg(imgUrl: String, imagePresent: UIImageView) {
                 let ref = Storage.storage().reference(forURL: imgUrl)
                 ref.getData(maxSize: 2 * 1024 * 1024, completion: { (data, error) in
                     if error != nil {
@@ -61,7 +69,7 @@ class ContactGvVC: UIViewController,UITableViewDelegate, UITableViewDataSource {
                         print("HAMMED: Image downloaded from Firebase storage, goood newwwws")
                         if let imgData = data {
                             if let img = UIImage(data: imgData) {
-                                self.postImage.image = img
+                                imagePresent.image = img
                                 
                             }
                         }
