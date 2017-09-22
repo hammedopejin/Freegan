@@ -13,11 +13,14 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
     
     let firebaseUser = DataService.ds.REF_USER_CURRENT
     
+    
     @IBOutlet weak var profileImg: CircleView!
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var userNameTF: FancyField!
     @IBOutlet weak var proflieImgChg: CircleView!
+    
     var imagePicker: UIImagePickerController!
+    var profileImgUrl: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,8 +39,9 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
         })
         firebaseProfileImgUrl.observeSingleEvent(of: .value, with: { (snapshot) in
             if let value = snapshot.value as? String{
-                let profileImgUrl = value
-                self.loadImg(imgUrl: profileImgUrl, imagePresent: self.profileImg!)
+                self.profileImgUrl = value
+                self.loadImg(imgUrl: self.profileImgUrl, imagePresent: self.profileImg!)
+                self.loadImg(imgUrl: self.profileImgUrl, imagePresent: self.proflieImgChg!)
             }
         })
         
@@ -78,7 +82,9 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
         present(imagePicker, animated: true, completion: nil)
     }
     @IBAction func updateProfileBtn(_ sender: Any) {
-        firebaseUser.child("userName").setValue(userNameTF.text)
+        if let username = userNameTF.text, username != ""{
+        firebaseUser.child("userName").setValue(username)
+        }
         
         if let imgData = UIImageJPEGRepresentation(self.proflieImgChg.image!, 0.2) {
             
@@ -86,11 +92,14 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
             let metadata = StorageMetadata()
             metadata.contentType = "image/jpeg"
             
+            _ = Storage.storage().reference(forURL: self.profileImgUrl).delete()
+            
             DataService.ds.REF_USER_IMAGES.child(imgUid).putData(imgData, metadata: metadata) { (metadata, error) in
                 if error != nil {
                     print("HAMMED: Unable to upload image to Firebasee torage")
                 } else {
                     print("HAMMED: Successfully uploaded image to Firebase storage")
+                    self.showToast(message: "Profile information successfully updated")
                     let downloadURL = metadata?.downloadURL()?.absoluteString
                     if let url = downloadURL {
                         self.firebaseUser.child("userImgUrl").setValue(url)
