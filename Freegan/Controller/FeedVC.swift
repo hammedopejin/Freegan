@@ -132,6 +132,10 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     
     
     func postToFirebase(imgUrl: String) {
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
+        let result = formatter.string(from: date)
         
 
         let post: Dictionary<String, AnyObject> = [
@@ -139,7 +143,8 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
             "imageUrl": imgUrl as AnyObject,
             "likes": 0 as AnyObject,
             "profileImgUrl": self.profileImgUrl! as AnyObject,
-            "userName": self.userName! as AnyObject
+            "userName": self.userName! as AnyObject,
+            "postDate": result as AnyObject
         ]
         
         let firebasePost = DataService.ds.REF_POSTS.childByAutoId()

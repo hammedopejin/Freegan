@@ -38,20 +38,6 @@ class SignInVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     }
     
     
-    func firebaseAuth(_ credential: AuthCredential) {
-        Auth.auth().signIn(with: credential, completion: { (user, error) in
-            if error != nil {
-                print("HAMMED: Unable to authenticate with Firebase - \(error)")
-            } else {
-                print("HAMMED: Successfully authenticated with Firebase")
-                if let user = user {
-                    let userData = ["provider": credential.provider]
-                    self.completeSignIn(id: user.uid, userData: userData)
-                }
-            }
-        })
-    }
-    
     func completeSignIn(id: String, userData: Dictionary<String, Any>) {
         DataService.ds.createFirbaseDBUser(uid: id, userData: userData as Dictionary<String, AnyObject>)
         //Load User Info/Data
@@ -70,17 +56,7 @@ class SignInVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
                         self.completeSignIn(id: user.uid, userData: userData)
                     }
                 } else {
-                    Auth.auth().createUser(withEmail: email, password: pwd, completion: { (user, error) in
-                        if error != nil {
-                            print("HAMMED: Unable to authenticate with Firebase using email")
-                        } else {
-                            print("HAMMED: Successfully authenticated with Firebase")
-                            if let user = user {
-                                let userData = ["provider": user.providerID, "userName": self.userNameField.text ?? "username"] as [String : Any]
-                                self.completeSignIn(id: user.uid, userData: userData as! Dictionary<String, String>)
-                            }
-                        }
-                    })
+                    self.showToast(message : "Login failed, invalid email and/or password")
                 }
             })
         }
@@ -89,7 +65,7 @@ class SignInVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         if let email = emailField.text, let pwd = pwdField.text {
                     Auth.auth().createUser(withEmail: email, password: pwd, completion: { (user, error) in
                         if error != nil {
-                            print("HAMMED: Unable to authenticate with Firebase using email")
+                            self.showToast(message : "Registration failed, invalid credentials")
                         } else {
                             print("HAMMED: Successfully authenticated with Firebase")
                             if let user = user {
@@ -131,4 +107,23 @@ class SignInVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     
     
 }
-
+extension UIViewController {
+    
+    func showToast(message : String) {
+        
+        let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width/2 - 175, y: self.view.frame.size.height-100, width: 350, height: 35))
+        toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+        toastLabel.textColor = UIColor.white
+        toastLabel.textAlignment = .center;
+        toastLabel.font = UIFont(name: "Montserrat-Light", size: 12.0)
+        toastLabel.text = message
+        toastLabel.alpha = 1.0
+        toastLabel.layer.cornerRadius = 10;
+        toastLabel.clipsToBounds  =  true
+        self.view.addSubview(toastLabel)
+        UIView.animate(withDuration: 4.0, delay: 0.1, options: .curveEaseOut, animations: {
+            toastLabel.alpha = 0.0
+        }, completion: {(isCompleted) in
+            toastLabel.removeFromSuperview()
+        })
+    } }
