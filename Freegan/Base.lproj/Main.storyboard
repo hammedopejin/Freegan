@@ -530,30 +530,17 @@
                                                                 </label>
                                                             </subviews>
                                                         </stackView>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g0T-PY-SCB" customClass="FancyBtn" customModule="Freegan" customModuleProvider="target">
-                                                            <rect key="frame" x="8" y="283" width="106" height="36"/>
-                                                            <color key="backgroundColor" red="0.0" green="0.53725490200000003" blue="0.45882352939999999" alpha="0.87" colorSpace="calibratedRGB"/>
-                                                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
-                                                            <state key="normal" title="Contact Giver">
-                                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                            </state>
-                                                            <connections>
-                                                                <action selector="contactGvTapped:" destination="OKG-UO-FcI" eventType="touchUpInside" id="1iZ-y7-863"/>
-                                                            </connections>
-                                                        </button>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="dgQ-ph-iWZ">
-                                                            <rect key="frame" x="154" y="293" width="105.66666666666667" height="22"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="dgQ-ph-iWZ">
+                                                            <rect key="frame" x="8" y="293" width="105.66666666666666" height="22"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Posted" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H2k-pt-gJd">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="49.666666666666664" height="22"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Posted" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H2k-pt-gJd">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="49.666666666666671" height="22"/>
                                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="7 days" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KP0-wz-9rg">
-                                                                    <rect key="frame" x="59.666666666666671" y="0.0" width="46.000000000000014" height="22"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7 days" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KP0-wz-9rg">
+                                                                    <rect key="frame" x="59.666666666666664" y="0.0" width="45.999999999999993" height="22"/>
                                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -563,14 +550,18 @@
                                                     </subviews>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
-                                                        <constraint firstItem="g0T-PY-SCB" firstAttribute="leading" secondItem="e8W-Pc-WiP" secondAttribute="leading" constant="8" id="0Mt-ej-KAH"/>
+                                                        <constraint firstItem="dgQ-ph-iWZ" firstAttribute="leading" secondItem="e8W-Pc-WiP" secondAttribute="leading" id="6R7-M2-13l"/>
+                                                        <constraint firstItem="dgQ-ph-iWZ" firstAttribute="top" secondItem="Ien-QT-XJB" secondAttribute="bottom" constant="8" id="7Lc-iM-6GQ"/>
                                                         <constraint firstItem="Ien-QT-XJB" firstAttribute="top" secondItem="e8W-Pc-WiP" secondAttribute="top" constant="8" id="9ie-qX-K8e"/>
                                                         <constraint firstAttribute="bottom" secondItem="BR6-Gl-rIN" secondAttribute="bottom" constant="8" id="Ap9-oh-P62"/>
+                                                        <constraint firstAttribute="bottom" secondItem="dgQ-ph-iWZ" secondAttribute="bottom" constant="8" id="G4D-pG-N9J"/>
                                                         <constraint firstAttribute="trailing" secondItem="BR6-Gl-rIN" secondAttribute="trailing" constant="8" id="Gam-E2-DWq"/>
-                                                        <constraint firstAttribute="bottom" secondItem="g0T-PY-SCB" secondAttribute="bottom" constant="4" id="P0l-2L-48H"/>
+                                                        <constraint firstItem="dgQ-ph-iWZ" firstAttribute="leading" secondItem="e8W-Pc-WiP" secondAttribute="leading" constant="8" id="HEI-Vb-jkk"/>
+                                                        <constraint firstAttribute="trailing" secondItem="BR6-Gl-rIN" secondAttribute="trailing" constant="8" id="Mu9-oK-o47"/>
                                                         <constraint firstAttribute="trailing" secondItem="Ien-QT-XJB" secondAttribute="trailing" constant="8" id="V8R-h2-b05"/>
                                                         <constraint firstItem="BR6-Gl-rIN" firstAttribute="top" secondItem="Ien-QT-XJB" secondAttribute="bottom" constant="8" id="ZvP-K3-ALr"/>
                                                         <constraint firstItem="Ien-QT-XJB" firstAttribute="leading" secondItem="e8W-Pc-WiP" secondAttribute="leading" constant="8" id="qrG-9b-hLc"/>
+                                                        <constraint firstAttribute="bottom" secondItem="BR6-Gl-rIN" secondAttribute="bottom" constant="8" id="rSs-60-nQm"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -675,11 +666,11 @@
                     <connections>
                         <outlet property="captionField" destination="IZs-BZ-zel" id="7da-O1-dLJ"/>
                         <outlet property="imageAdd" destination="fvb-Ek-jNe" id="oyl-o5-gpr"/>
-                        <outlet property="tableView" destination="Q8r-pz-pJF" id="xyo-PW-mbU"/>
+                        <outlet property="tableView" destination="Q8r-pz-pJF" id="s50-1f-b0w"/>
                         <outlet property="userImage" destination="2hQ-hj-zgd" id="FZC-IB-mwb"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="goToSignIn" id="9AA-Ux-i7z"/>
-                        <segue destination="VJ3-0O-erB" kind="show" identifier="goToContactGv" id="rN4-T2-R6K"/>
                         <segue destination="wo2-Vh-hsK" kind="show" identifier="goToProfile" id="quX-Os-4ps"/>
+                        <segue destination="VJ3-0O-erB" kind="showDetail" identifier="gotoContactVC" id="HMr-uh-WvH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Ha-1U-uep" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -745,7 +736,7 @@
                                         <rect key="frame" x="0.0" y="28" width="414" height="141"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CRF-tk-tWR" id="76V-UM-3aO">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="141"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="140.66666666666666"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="big-hf-jR5">
@@ -946,6 +937,6 @@
         <image name="sign-out" width="92" height="65"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="YFJ-FB-KtY"/>
+        <segue reference="vi3-uv-6DE"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -39,14 +39,11 @@ class ContactGvVC: UIViewController,UITableViewDelegate, UITableViewDataSource {
                     if let postDict = snap.value as? String {
                         if snap.key == "description"{
                             self.caption.text = snap.value as! String
-                        }
-                        if snap.key == "imageUrl"{
+                        }else if snap.key == "imageUrl"{
                             self.loadImg(imgUrl: snap.value as! String, imagePresent: self.postImage!)
-                        }
-                        if snap.key == "userName"{
+                        }else if snap.key == "userName"{
                             self.giverUsername.text = snap.value as! String
-                        }
-                        if snap.key == "profileImgUrl"{
+                        }else if snap.key == "profileImgUrl"{
                             self.loadImg(imgUrl: snap.value as! String, imagePresent: self.giverImg!)
                         }
                         
@@ -127,8 +124,9 @@ class ContactGvVC: UIViewController,UITableViewDelegate, UITableViewDataSource {
                     self.laChatList.reloadData()
                     let indexpath = IndexPath(row: self.listOfChatInfo.count-1, section: 0)
                     
-                   // self.laChatList.scrollToRow(at: indexpath, at: .bottom, animated: true)
-                    
+                    if self.listOfChatInfo.count > 0{
+                        self.laChatList.scrollToRow(at: indexpath, at: .bottom, animated: true)
+                    }
                 }
                 
         })

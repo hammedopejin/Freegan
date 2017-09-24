@@ -5,12 +5,11 @@
 //  Created by Hammed Opejin on 8/4/17.
 //  Copyright © 2017 Hammed Opejin. All rights reserved.
 //
-
 import UIKit
 import Firebase
 import SwiftKeychainWrapper
 
-class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
     @IBOutlet weak var userImage: CircleView!
     @IBOutlet weak var tableView: UITableView!
@@ -27,6 +26,8 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     var profileImgUrl: String!
     var userName: String!
     var userImgUrl: String!
+    var username: String!
+    var postkey: String!
     
     
     override func viewDidLoad() {
@@ -34,6 +35,9 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.isEditing = false
+        tableView.allowsSelection = true
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
         imagePicker = UIImagePickerController()
         imagePicker.allowsEditing = true
@@ -81,24 +85,24 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         if self.profileImgUrl != nil{
             let img = FeedVC.imageCache.object(forKey: self.profileImgUrl as NSString)
             if img != nil{
-              self.userImage.image = img
+                self.userImage.image = img
             }else{
-            let ref = Storage.storage().reference(forURL: self.profileImgUrl!)
-            ref.getData(maxSize: 2 * 1024 * 1024, completion: { (data, error) in
-                if error != nil {
-                    print("HAMMED: Unable to download image from Firebase storage")
-                } else {
-                    print("HAMMED: Image downloaded from Firebase storage, goood newwwws")
-                    if let imgData = data {
-                        if let img = UIImage(data: imgData) {
-                            self.userImage.image = img
-                            FeedVC.imageCache.setObject(img, forKey: self.profileImgUrl as NSString)
-
+                let ref = Storage.storage().reference(forURL: self.profileImgUrl!)
+                ref.getData(maxSize: 2 * 1024 * 1024, completion: { (data, error) in
+                    if error != nil {
+                        print("HAMMED: Unable to download image from Firebase storage")
+                    } else {
+                        print("HAMMED: Image downloaded from Firebase storage, goood newwwws")
+                        if let imgData = data {
+                            if let img = UIImage(data: imgData) {
+                                self.userImage.image = img
+                                FeedVC.imageCache.setObject(img, forKey: self.profileImgUrl as NSString)
+                                
+                            }
                         }
                     }
-                }
-            })
-        }
+                })
+            }
         }else{
             print("HAMMED: Image downloaded from Firebase storage, bd newwwws")
         }
@@ -129,6 +133,14 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
             return PostCell()
         }
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let post = posts[indexPath.row]
+        self.userName = post.userName
+        self.postKey = post.postKey
+        
+        performSegue(withIdentifier: "gotoContactVC", sender: nil)
+            
+    }
     
     
     func postToFirebase(imgUrl: String) {
@@ -137,7 +149,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         formatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
         let result = formatter.string(from: date)
         
-
+        
         let post: Dictionary<String, AnyObject> = [
             "description": captionField.text! as AnyObject,
             "imageUrl": imgUrl as AnyObject,
@@ -203,13 +215,11 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     
     
     
-    @IBAction func contactGvTapped(_ sender: Any) {
-        
-        performSegue(withIdentifier: "goToContactGv", sender: nil)
-    }
+    
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "goToContactGv" {
+        if segue.identifier == "gotoContactVC" {
             
             if let dis = segue.destination as? ContactGvVC {
                 dis.userName = self.userName
@@ -232,4 +242,3 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     }
     
 }
-
