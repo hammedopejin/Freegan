@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0900"
+   LastUpgradeVersion = "0700"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B00AB50F9F31137CDF0821093B974B41"
+               BlueprintIdentifier = "3AF962757125EF1748988F5D9171C56C"
                BuildableName = "Pods_Freegan.framework"
                BlueprintName = "Pods-Freegan"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B00AB50F9F31137CDF0821093B974B41"
+            BlueprintIdentifier = "3AF962757125EF1748988F5D9171C56C"
             BuildableName = "Pods_Freegan.framework"
             BlueprintName = "Pods-Freegan"
             ReferencedContainer = "container:Pods.xcodeproj">

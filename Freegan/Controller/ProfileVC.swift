@@ -28,6 +28,10 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
         imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        self.navigationController?.hidesBarsOnTap
+        //self.navigationController?.setNavigationBarHidden(false, animated: true)
+        
         let firebaseUserName = firebaseUser.child("userName")
         let firebaseProfileImgUrl = firebaseUser.child("userImgUrl")
         firebaseUserName.observeSingleEvent(of: .value, with: { (snapshot) in
@@ -40,6 +44,7 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
         firebaseProfileImgUrl.observeSingleEvent(of: .value, with: { (snapshot) in
             if let value = snapshot.value as? String{
                 self.profileImgUrl = value
+                
                 self.loadImg(imgUrl: self.profileImgUrl, imagePresent: self.profileImg!)
                 self.loadImg(imgUrl: self.profileImgUrl, imagePresent: self.proflieImgChg!)
             }
@@ -50,8 +55,9 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
     
     
     
-
+    
     func loadImg(imgUrl: String, imagePresent: UIImageView) {
+        
         let ref = Storage.storage().reference(forURL: imgUrl)
         ref.getData(maxSize: 2 * 1024 * 1024, completion: { (data, error) in
             if error != nil {
@@ -83,7 +89,7 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
     }
     @IBAction func updateProfileBtn(_ sender: Any) {
         if let username = userNameTF.text, username != ""{
-        firebaseUser.child("userName").setValue(username)
+            firebaseUser.child("userName").setValue(username)
         }
         
         if let imgData = UIImageJPEGRepresentation(self.proflieImgChg.image!, 0.2) {
@@ -92,16 +98,17 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
             let metadata = StorageMetadata()
             metadata.contentType = "image/jpeg"
             
-            _ = Storage.storage().reference(forURL: self.profileImgUrl).delete()
+            
             
             DataService.ds.REF_USER_IMAGES.child(imgUid).putData(imgData, metadata: metadata) { (metadata, error) in
                 if error != nil {
-                    print("HAMMED: Unable to upload image to Firebasee torage")
+                    print("HAMMED: Unable to upload image to Firebasee Storage \(error.debugDescription)")
                 } else {
                     print("HAMMED: Successfully uploaded image to Firebase storage")
                     self.showToast(message: "Profile information successfully updated")
                     let downloadURL = metadata?.downloadURL()?.absoluteString
                     if let url = downloadURL {
+                        _ = Storage.storage().reference(forURL: self.profileImgUrl).delete()
                         self.firebaseUser.child("userImgUrl").setValue(url)
                     }
                 }
@@ -110,7 +117,16 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
         
     }
     @IBAction func goToFeedTapped(_ sender: Any) {
-        performSegue(withIdentifier: "profileToFeed", sender: nil)
+        //self.navigationController?.popViewController(animated: true)
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "BaseVC") as! UITabBarController
+        
+        vc.selectedIndex = 0
+        
+        self.present(vc, animated: true, completion: nil)
     }
     
+    @IBAction func goToMyPostsTapped(_ sender: Any) {
+        performSegue(withIdentifier: "goToMyPosts", sender: nil)
+    }
 }
+

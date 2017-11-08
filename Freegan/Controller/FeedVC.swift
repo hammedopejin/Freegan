@@ -9,16 +9,20 @@ import UIKit
 import Firebase
 import SwiftKeychainWrapper
 
-class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UISearchResultsUpdating, UISearchBarDelegate{
     
     @IBOutlet weak var userImage: CircleView!
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var imageAdd: CircleView!
     @IBOutlet weak var captionField: FancyField!
     
     let firebaseUser = DataService.ds.REF_USER_CURRENT
+    let searchController = UISearchController(searchResultsController: nil)
     var posts = [Post]()
+    var filteredPosts: [Post] = []
     var user: User?
+    var currentUser: User?
     var postKey: String?
     var imagePicker: UIImagePickerController!
     static var imageCache: NSCache<NSString, UIImage> = NSCache()
@@ -29,7 +33,11 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     var username: String!
     var postkey: String!
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -39,9 +47,22 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         tableView.allowsSelection = true
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        
+        searchBar.delegate = self
+        searchBar.addSubview(searchController.searchBar)
+        searchBar.returnKeyType = UIReturnKeyType.done
+        
+        
         imagePicker = UIImagePickerController()
         imagePicker.allowsEditing = true
         imagePicker.delegate = self
+        
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        
+        
         
         DataService.ds.REF_POSTS.observe(.value, with: { (snapshot) in
             
@@ -60,6 +81,17 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
                 }
             }
             self.tableView.reloadData()
+            
+        })
+        firebase.child(kUSER).queryOrdered(byChild: kOBJECTID).queryEqual(toValue: KeychainWrapper.defaultKeychainWrapper.string(forKey: KEY_UID)!).observe(.value, with: {
+            snapshot in
+            
+            if snapshot.exists() {
+                
+                self.currentUser = User.init(_dictionary: ((snapshot.value as! NSDictionary).allValues as NSArray).firstObject! as! NSDictionary)
+                
+            }
+            
         })
         
         let firebaseUserName = firebaseUser.child("userName")
@@ -83,42 +115,55 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     
     func loadUserImg() {
         if self.profileImgUrl != nil{
-            let img = FeedVC.imageCache.object(forKey: self.profileImgUrl as NSString)
-            if img != nil{
-                self.userImage.image = img
-            }else{
-                let ref = Storage.storage().reference(forURL: self.profileImgUrl!)
-                ref.getData(maxSize: 2 * 1024 * 1024, completion: { (data, error) in
-                    if error != nil {
-                        print("HAMMED: Unable to download image from Firebase storage")
-                    } else {
-                        print("HAMMED: Image downloaded from Firebase storage, goood newwwws")
-                        if let imgData = data {
-                            if let img = UIImage(data: imgData) {
-                                self.userImage.image = img
-                                FeedVC.imageCache.setObject(img, forKey: self.profileImgUrl as NSString)
-                                
-                            }
+            let ref = Storage.storage().reference(forURL: self.profileImgUrl!)
+            
+            ref.getData(maxSize: 2 * 1024 * 1024, completion: { (data, error) in
+                if error != nil {
+                    print("HAMMED: Unable to download image from Firebase storage \(error.debugDescription)")
+
+                } else {
+                    print("HAMMED: Image downloaded from Firebase storage, goood newwwws")
+                    if let imgData = data {
+                        if let img = UIImage(data: imgData) {
+                            self.userImage.image = img
+                            FeedVC.imageCache.setObject(img, forKey: self.profileImgUrl as NSString)
+                            
                         }
                     }
-                })
-            }
+                }
+            })
         }else{
             print("HAMMED: Image downloaded from Firebase storage, bd newwwws")
         }
     }
     
+    
+    //MARK: TableViewDataSource
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if searchController.isActive && searchController.searchBar.text != "" {
+            
+            return filteredPosts.count
+            
+        }
         return posts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let post = posts[indexPath.row]
+        var post: Post
+        if searchController.isActive && searchController.searchBar.text != "" {
+            
+            post = filteredPosts[indexPath.row]
+            
+        } else {
+            
+            post = posts[indexPath.row]
+        }
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell") as? PostCell {
             
@@ -133,20 +178,59 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
             return PostCell()
         }
     }
+    
+    
+    //MARK: TablevieDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let post = posts[indexPath.row]
+        tableView.deselectRow(at: indexPath, animated: true)
+        var post: Post
+        if searchController.isActive && searchController.searchBar.text != "" {
+            
+            post = filteredPosts[indexPath.row]
+            
+        } else {
+            
+            post = posts[indexPath.row]
+        }
+        
+        /////////////////////////////
         self.userName = post.userName
         self.postKey = post.postKey
         
-        performSegue(withIdentifier: "gotoContactVC", sender: nil)
+        
+        let chatVC = ChatViewController()
+        
+        firebase.child(kUSER).queryOrdered(byChild: kOBJECTID).queryEqual(toValue: post.postUserObjectId).observe(.value, with: {
+            snapshot in
             
+            if snapshot.exists() {
+                
+                self.user = User.init(_dictionary: ((snapshot.value as! NSDictionary).allValues as NSArray).firstObject! as! NSDictionary)
+                if (self.user != nil) {
+                    chatVC.titleName = self.user!.userName
+                    chatVC.members = [(self.currentUser?.objectId)!, (self.user!.objectId)]
+                    if ((self.currentUser) != nil) {
+                    print((self.currentUser?.objectId)!)
+                    chatVC.chatRoomId = startChat(user1: self.currentUser!, user2: self.user!)
+                    
+                    chatVC.hidesBottomBarWhenPushed = true
+                    if (self.currentUser?.objectId != self.user!.objectId){
+                            self.navigationController?.pushViewController(chatVC, animated: true)
+                    }
+                    }
+                }
+            }
+            
+        })
+
+        
     }
     
     
     func postToFirebase(imgUrl: String) {
         let date = Date()
         let formatter = DateFormatter()
-        formatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
+        formatter.dateFormat = "yyyy-MM-dd"
         let result = formatter.string(from: date)
         
         
@@ -155,8 +239,9 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
             "imageUrl": imgUrl as AnyObject,
             "likes": 0 as AnyObject,
             "profileImgUrl": self.profileImgUrl! as AnyObject,
-            "userName": self.userName! as AnyObject,
-            "postDate": result as AnyObject
+            "userName": self.currentUser!.userName as AnyObject,
+            "postDate": result as AnyObject,
+            "postUserObjectId": User.currentId() as AnyObject
         ]
         
         let firebasePost = DataService.ds.REF_POSTS.childByAutoId()
@@ -185,13 +270,16 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     
     @IBAction func postBtnTapped(_ sender: Any) {
         guard let caption = captionField.text, caption != "" else {
-            print("HAMMED: Caption must be entered")
+            showToast(message: "Caption must be entered")
             return
         }
         guard let img = imageAdd.image, imageSelected == true else {
-            print("HAMMED: An image must be selected")
+            showToast(message: "An image must be selected")
             return
         }
+        let spinningActivity = MBProgressHUD.showAdded(to: self.view, animated: true)
+        spinningActivity.label.text = "Uploading Post"
+        spinningActivity.detailsLabel.text = "Please Wait..."
         
         if let imgData = UIImageJPEGRepresentation(img, 0.2) {
             
@@ -207,12 +295,32 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
                     let downloadURL = metadata?.downloadURL()?.absoluteString
                     if let url = downloadURL {
                         self.postToFirebase(imgUrl: url)
+                        
+                        MBProgressHUD.hide(for: self.view, animated: true)
+                        
                     }
                 }
             }
         }
     }
     
+    
+    //MARK: SearchController functions
+    
+    func filterContentForSearchText(searchText: String, scope: String = "All") {
+        
+        filteredPosts = posts.filter({ (post) -> Bool in
+            return post.caption.lowercased().contains(searchText.lowercased())
+        })
+        
+        tableView.reloadData()
+        
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        
+        filterContentForSearchText(searchText: searchController.searchBar.text!)
+    }
     
     
     
@@ -221,7 +329,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "gotoContactVC" {
             
-            if let dis = segue.destination as? ContactGvVC {
+            if let dis = segue.destination as? ChatViewController {
                 dis.userName = self.userName
                 dis.postKey = self.postKey
             }
@@ -233,7 +341,14 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         let keychainResult = KeychainWrapper.standard.removeObject(forKey: KEY_UID)
         print("HAMMED: ID removed from keychain \(keychainResult)")
         try! Auth.auth().signOut()
-        performSegue(withIdentifier: "goToSignIn", sender: nil)
+        
+        
+        //cleanupFirebaseObservers()
+        
+        
+        
+        let login = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SignInVC")
+        self.present(login, animated: true, completion: nil)
     }
     
     @IBAction func goToProfileTapped(_ sender: Any) {

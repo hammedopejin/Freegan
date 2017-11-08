@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import SwiftKeychainWrapper
+import MobileCoreServices
 
 class SignInVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     @IBOutlet weak var emailField: FancyField!
@@ -39,7 +40,7 @@ class SignInVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     
     
     func completeSignIn(id: String, userData: Dictionary<String, Any>) {
-        DataService.ds.createFirbaseDBUser(uid: id, userData: userData as Dictionary<String, AnyObject>)
+        //DataService.ds.createFirbaseDBUser(uid: id, userData: userData as Dictionary<String, AnyObject>)
         //Load User Info/Data
         let keychainResult = KeychainWrapper.defaultKeychainWrapper.set(id, forKey: KEY_UID)
         print("HAMMED: Data saved to keychain \(keychainResult)")
@@ -62,7 +63,8 @@ class SignInVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         }
     }
     @IBAction func registerTapped(_ sender: Any) {
-        if let email = emailField.text, let pwd = pwdField.text {
+        if let email = emailField.text, let pwd = pwdField.text, let userName = userNameField.text {
+            
                     Auth.auth().createUser(withEmail: email, password: pwd, completion: { (user, error) in
                         if error != nil {
                             self.showToast(message : "Registration failed, invalid credentials")
@@ -79,12 +81,20 @@ class SignInVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
                                     DataService.ds.REF_USER_IMAGES.child(imgUid).putData(imgData, metadata: metadata) { (metadata, error) in
                                         if error != nil {
                                             print("HAMMED: Unable to upload image to Firebasee torage")
+                                            let userData = ["provider": user.providerID, "userName": userName] as [String : Any]
+                                            
+                                            User.registerUserWith(email: email, firuseruid: user.uid, userName: userName, userImgUrl: "gs://freegan-42b40.appspot.com/user-images/persoicon.png")
+                                            
+                                            self.completeSignIn(id: user.uid, userData: userData)
                                         } else {
                                             print("HAMMED: Successfully uploaded image to Firebase storage")
                                             let downloadURL = metadata?.downloadURL()?.absoluteString
                                             if let url = downloadURL {
                                                 if self.userNameField.text == nil{ self.userNameField.text = "New User" }
-                                                let userData = ["provider": user.providerID, "userImgUrl": url, "userName": self.userNameField.text!] as [String : Any]
+                                                let userData = ["provider": user.providerID, "userImgUrl": url, "userName": userName] as [String : Any]
+                                                
+                                                User.registerUserWith(email: email, firuseruid: user.uid, userName: userName, userImgUrl: url)
+                                                
                                                 self.completeSignIn(id: user.uid, userData: userData)
                                             }
                                         }

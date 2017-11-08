@@ -8,9 +8,15 @@
 
 import UIKit
 import Firebase
+import FirebaseDatabase
+import FirebaseAuth
+import NotificationCenter
+import UserNotifications
+import OneSignal
+
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
 
@@ -19,6 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         FirebaseApp.configure()
+        Database.database().isPersistenceEnabled = true
         return true
     }
 

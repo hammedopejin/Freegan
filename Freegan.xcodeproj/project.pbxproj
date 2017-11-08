@@ -7,11 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F06B4021FA82B7200C582A2 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F06B4011FA82B4600C582A2 /* CoreData.framework */; };
 		0F07260F1F3AAEE800EE805C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F07260E1F3AAEE800EE805C /* User.swift */; };
-		0F2517201F423BE40085D1E8 /* ContactGvVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F25171F1F423BE40085D1E8 /* ContactGvVC.swift */; };
+		0F0D36261FA036510053558E /* RNCryptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0D36241FA036500053558E /* RNCryptor.swift */; };
+		0F0D362B1FA036AA0053558E /* Encryption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F0D362A1FA036AA0053558E /* Encryption.swift */; };
 		0F2517221F4240BD0085D1E8 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2517211F4240BD0085D1E8 /* ProfileVC.swift */; };
-		0F2517241F42985A0085D1E8 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2517231F42985A0085D1E8 /* Chat.swift */; };
-		0F2517261F43884B0085D1E8 /* TVCChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2517251F43884B0085D1E8 /* TVCChat.swift */; };
+		0F4FA1DA1FA262110051669D /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F4FA1D81FA262110051669D /* MBProgressHUD.m */; };
+		0F4FA1DB1FA2644C0051669D /* MBProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F4FA1CA1FA19E950051669D /* MBProgressHUD.framework */; };
+		0F4FA1E11FA3F2D40051669D /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F4FA1E01FA3F2D40051669D /* Camera.swift */; };
+		0F6C65371FAFD22B00E20B30 /* MyPostsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6C65361FAFD22B00E20B30 /* MyPostsTableViewController.swift */; };
+		0F6C65391FAFD29B00E20B30 /* EditPostItemVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6C65381FAFD29B00E20B30 /* EditPostItemVC.swift */; };
+		0F6C653B1FB02DBB00E20B30 /* EditPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6C653A1FB02DBA00E20B30 /* EditPostTableViewCell.swift */; };
 		0F9015391F34096A004F96ED /* FancyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F9015381F34096A004F96ED /* FancyView.swift */; };
 		0F90153C1F340ABC004F96ED /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F90153B1F340ABC004F96ED /* Constants.swift */; };
 		0F90153E1F340D46004F96ED /* RoundBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F90153D1F340D46004F96ED /* RoundBtn.swift */; };
@@ -28,15 +34,39 @@
 		0F96917B1F3397C100802C57 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F96917A1F3397C100802C57 /* Assets.xcassets */; };
 		0F96917E1F3397C100802C57 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F96917C1F3397C100802C57 /* LaunchScreen.storyboard */; };
 		0F9691861F339D9B00802C57 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0F9691851F339D9B00802C57 /* GoogleService-Info.plist */; };
-		BAA8F3B746CCD3AFF381FCB5 /* Pods_Freegan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1690BF996CD58D5B330B36D7 /* Pods_Freegan.framework */; };
+		0FAD4BAC1FA9123F0034E766 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FAD4BAB1FA912370034E766 /* ImageIO.framework */; };
+		0FB8ABE01F9B003200C5C697 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB8ABDF1F9B003200C5C697 /* Utilities.swift */; };
+		0FB8ABE41F9B042300C5C697 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB8ABE31F9B042300C5C697 /* ChatViewController.swift */; };
+		0FB8ABF91F9D3BFF00C5C697 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FB8ABF81F9D3BF600C5C697 /* SystemConfiguration.framework */; };
+		0FB8ABFD1F9D4E8900C5C697 /* RecentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB8ABFC1F9D4E8900C5C697 /* RecentViewController.swift */; };
+		0FB8ABFF1F9D4F6C00C5C697 /* RecentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB8ABFE1F9D4F6C00C5C697 /* RecentTableViewCell.swift */; };
+		0FB8AC011F9E972100C5C697 /* Recent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB8AC001F9E972100C5C697 /* Recent.swift */; };
+		0FB8AC031F9E978700C5C697 /* OutgoingMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB8AC021F9E978700C5C697 /* OutgoingMessage.swift */; };
+		0FB8AC051F9EA4AF00C5C697 /* IncomingMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FB8AC041F9EA4AF00C5C697 /* IncomingMessage.swift */; };
+		0FD435CF1FAA9C770032B05C /* PushKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FB8ABFA1F9D3C1400C5C697 /* PushKit.framework */; };
+		95B8488CFD547A22058EDF38 /* Pods_Freegan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 214FE02A51EAA1F73B23971D /* Pods_Freegan.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0F06B4011FA82B4600C582A2 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		0F07260E1F3AAEE800EE805C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		0F25171F1F423BE40085D1E8 /* ContactGvVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactGvVC.swift; sourceTree = "<group>"; };
+		0F0D36241FA036500053558E /* RNCryptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RNCryptor.swift; path = ../../../../Downloads/quickchat2.0/QuickChat2.0/RNCryptor.swift; sourceTree = "<group>"; };
+		0F0D36251FA036510053558E /* RNCryptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNCryptor.h; path = ../../../../Downloads/quickchat2.0/QuickChat2.0/RNCryptor.h; sourceTree = "<group>"; };
+		0F0D36281FA036650053558E /* RNCryptor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNCryptor.h; sourceTree = "<group>"; };
+		0F0D36291FA036650053558E /* RNCryptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RNCryptor.swift; sourceTree = "<group>"; };
+		0F0D362A1FA036AA0053558E /* Encryption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encryption.swift; sourceTree = "<group>"; };
 		0F2517211F4240BD0085D1E8 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
-		0F2517231F42985A0085D1E8 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
-		0F2517251F43884B0085D1E8 /* TVCChat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TVCChat.swift; path = ../../../../Downloads/ChatApp/ChatApp/TVCChat.swift; sourceTree = "<group>"; };
+		0F4FA1CA1FA19E950051669D /* MBProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MBProgressHUD.framework; path = "../../Library/Developer/Xcode/DerivedData/Freegan-cmaffmunjfhqocgaxisgjvfgysbm/Build/Products/Debug-iphonesimulator/MBProgressHUD/MBProgressHUD.framework"; sourceTree = "<group>"; };
+		0F4FA1D81FA262110051669D /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = ../../../../Downloads/MBProgressHUD.m; sourceTree = "<group>"; };
+		0F4FA1D91FA262110051669D /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = ../../../../Downloads/MBProgressHUD.h; sourceTree = "<group>"; };
+		0F4FA1DD1FA269FF0051669D /* ProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ProgressHUD.bundle; sourceTree = "<group>"; };
+		0F4FA1DE1FA269FF0051669D /* ProgressHUD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProgressHUD.h; sourceTree = "<group>"; };
+		0F4FA1DF1FA269FF0051669D /* ProgressHUD.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProgressHUD.m; sourceTree = "<group>"; };
+		0F4FA1E01FA3F2D40051669D /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
+		0F4FA1E21FA3F2F40051669D /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		0F6C65361FAFD22B00E20B30 /* MyPostsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostsTableViewController.swift; sourceTree = "<group>"; };
+		0F6C65381FAFD29B00E20B30 /* EditPostItemVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPostItemVC.swift; sourceTree = "<group>"; };
+		0F6C653A1FB02DBA00E20B30 /* EditPostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPostTableViewCell.swift; sourceTree = "<group>"; };
 		0F9015381F34096A004F96ED /* FancyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FancyView.swift; path = "../../../../Downloads/devslopes-social-final-source-code/devslopes-social/FancyView.swift"; sourceTree = "<group>"; };
 		0F90153B1F340ABC004F96ED /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		0F90153D1F340D46004F96ED /* RoundBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoundBtn.swift; path = "../../../../Downloads/devslopes-social-final-source-code/devslopes-social/RoundBtn.swift"; sourceTree = "<group>"; };
@@ -55,9 +85,21 @@
 		0F96917D1F3397C100802C57 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0F96917F1F3397C100802C57 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F9691851F339D9B00802C57 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
-		1690BF996CD58D5B330B36D7 /* Pods_Freegan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Freegan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E86A8EAB41CA0312971C0618 /* Pods-Freegan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Freegan.release.xcconfig"; path = "Pods/Target Support Files/Pods-Freegan/Pods-Freegan.release.xcconfig"; sourceTree = "<group>"; };
-		E958B4EAEC160AC98F9C1CF5 /* Pods-Freegan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Freegan.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Freegan/Pods-Freegan.debug.xcconfig"; sourceTree = "<group>"; };
+		0FAD4BAB1FA912370034E766 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		0FB8ABDF1F9B003200C5C697 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		0FB8ABE31F9B042300C5C697 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		0FB8ABF61F9D3BB500C5C697 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		0FB8ABF81F9D3BF600C5C697 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		0FB8ABFA1F9D3C1400C5C697 /* PushKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PushKit.framework; path = System/Library/Frameworks/PushKit.framework; sourceTree = SDKROOT; };
+		0FB8ABFC1F9D4E8900C5C697 /* RecentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentViewController.swift; sourceTree = "<group>"; };
+		0FB8ABFE1F9D4F6C00C5C697 /* RecentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentTableViewCell.swift; sourceTree = "<group>"; };
+		0FB8AC001F9E972100C5C697 /* Recent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recent.swift; sourceTree = "<group>"; };
+		0FB8AC021F9E978700C5C697 /* OutgoingMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutgoingMessage.swift; sourceTree = "<group>"; };
+		0FB8AC041F9EA4AF00C5C697 /* IncomingMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomingMessage.swift; sourceTree = "<group>"; };
+		0FB8AC071F9FB29900C5C697 /* Freegan-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Freegan-Bridging-Header.h"; sourceTree = "<group>"; };
+		214FE02A51EAA1F73B23971D /* Pods_Freegan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Freegan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		41D49825F8F68CA2E221F3FB /* Pods-Freegan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Freegan.release.xcconfig"; path = "Pods/Target Support Files/Pods-Freegan/Pods-Freegan.release.xcconfig"; sourceTree = "<group>"; };
+		BDEB1C9AC96DDC79F6144125 /* Pods-Freegan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Freegan.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Freegan/Pods-Freegan.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,19 +107,54 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BAA8F3B746CCD3AFF381FCB5 /* Pods_Freegan.framework in Frameworks */,
+				0FD435CF1FAA9C770032B05C /* PushKit.framework in Frameworks */,
+				0FAD4BAC1FA9123F0034E766 /* ImageIO.framework in Frameworks */,
+				0F06B4021FA82B7200C582A2 /* CoreData.framework in Frameworks */,
+				0F4FA1DB1FA2644C0051669D /* MBProgressHUD.framework in Frameworks */,
+				0FB8ABF91F9D3BFF00C5C697 /* SystemConfiguration.framework in Frameworks */,
+				95B8488CFD547A22058EDF38 /* Pods_Freegan.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F0D36231FA036230053558E /* Encryptor */ = {
+			isa = PBXGroup;
+			children = (
+				0F0D36251FA036510053558E /* RNCryptor.h */,
+				0F0D36241FA036500053558E /* RNCryptor.swift */,
+			);
+			path = Encryptor;
+			sourceTree = "<group>";
+		};
+		0F0D36271FA036650053558E /* Encryption */ = {
+			isa = PBXGroup;
+			children = (
+				0F0D36281FA036650053558E /* RNCryptor.h */,
+				0F0D36291FA036650053558E /* RNCryptor.swift */,
+			);
+			path = Encryption;
+			sourceTree = "<group>";
+		};
+		0F4FA1DC1FA269FF0051669D /* ProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				0F4FA1DD1FA269FF0051669D /* ProgressHUD.bundle */,
+				0F4FA1DE1FA269FF0051669D /* ProgressHUD.h */,
+				0F4FA1DF1FA269FF0051669D /* ProgressHUD.m */,
+			);
+			path = ProgressHUD;
+			sourceTree = "<group>";
+		};
 		0F9015351F33A222004F96ED /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				0F90154A1F3681F1004F96ED /* Post.swift */,
 				0F07260E1F3AAEE800EE805C /* User.swift */,
-				0F2517231F42985A0085D1E8 /* Chat.swift */,
+				0FB8AC041F9EA4AF00C5C697 /* IncomingMessage.swift */,
+				0FB8AC021F9E978700C5C697 /* OutgoingMessage.swift */,
+				0FB8AC001F9E972100C5C697 /* Recent.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -86,7 +163,8 @@
 			isa = PBXGroup;
 			children = (
 				0F9015451F3526AA004F96ED /* PostCell.swift */,
-				0F2517251F43884B0085D1E8 /* TVCChat.swift */,
+				0F6C653A1FB02DBA00E20B30 /* EditPostTableViewCell.swift */,
+				0FB8ABFE1F9D4F6C00C5C697 /* RecentTableViewCell.swift */,
 				0F90153F1F34109E004F96ED /* FancyField.swift */,
 				0F90154C1F37BCBA004F96ED /* CircleView.swift */,
 				0F9015411F341180004F96ED /* FancyBtn.swift */,
@@ -100,9 +178,12 @@
 			isa = PBXGroup;
 			children = (
 				0F9691751F3397C100802C57 /* SignInVC.swift */,
+				0F6C65361FAFD22B00E20B30 /* MyPostsTableViewController.swift */,
+				0F6C65381FAFD29B00E20B30 /* EditPostItemVC.swift */,
+				0FB8ABFC1F9D4E8900C5C697 /* RecentViewController.swift */,
 				0F9015431F34EFCD004F96ED /* FeedVC.swift */,
-				0F25171F1F423BE40085D1E8 /* ContactGvVC.swift */,
 				0F2517211F4240BD0085D1E8 /* ProfileVC.swift */,
+				0FB8ABE31F9B042300C5C697 /* ChatViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -111,6 +192,11 @@
 			isa = PBXGroup;
 			children = (
 				0F90153B1F340ABC004F96ED /* Constants.swift */,
+				0F4FA1D91FA262110051669D /* MBProgressHUD.h */,
+				0F4FA1D81FA262110051669D /* MBProgressHUD.m */,
+				0F0D362A1FA036AA0053558E /* Encryption.swift */,
+				0F4FA1E01FA3F2D40051669D /* Camera.swift */,
+				0FB8ABDF1F9B003200C5C697 /* Utilities.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -126,10 +212,12 @@
 		0F9691671F3397C100802C57 = {
 			isa = PBXGroup;
 			children = (
+				0F4FA1DC1FA269FF0051669D /* ProgressHUD */,
+				0F0D36271FA036650053558E /* Encryption */,
 				0F9691721F3397C100802C57 /* Freegan */,
 				0F9691711F3397C100802C57 /* Products */,
-				94CCF7279CF8A98BD167620F /* Pods */,
 				D8C224C17A03CC8C3967AF29 /* Frameworks */,
+				7E62046BA2D7A1D533341889 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -144,12 +232,14 @@
 		0F9691721F3397C100802C57 /* Freegan */ = {
 			isa = PBXGroup;
 			children = (
+				0F0D36231FA036230053558E /* Encryptor */,
 				0F9015471F3530B8004F96ED /* Services */,
 				0F90153A1F3409D7004F96ED /* Util */,
 				0F9015351F33A222004F96ED /* Model */,
 				0F9015371F33A230004F96ED /* Controller */,
 				0F9015361F33A229004F96ED /* View */,
 				0F9691731F3397C100802C57 /* AppDelegate.swift */,
+				0FB8AC071F9FB29900C5C697 /* Freegan-Bridging-Header.h */,
 				0F9691771F3397C100802C57 /* Main.storyboard */,
 				0F96917A1F3397C100802C57 /* Assets.xcassets */,
 				0F96917C1F3397C100802C57 /* LaunchScreen.storyboard */,
@@ -159,11 +249,11 @@
 			path = Freegan;
 			sourceTree = "<group>";
 		};
-		94CCF7279CF8A98BD167620F /* Pods */ = {
+		7E62046BA2D7A1D533341889 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				E958B4EAEC160AC98F9C1CF5 /* Pods-Freegan.debug.xcconfig */,
-				E86A8EAB41CA0312971C0618 /* Pods-Freegan.release.xcconfig */,
+				BDEB1C9AC96DDC79F6144125 /* Pods-Freegan.debug.xcconfig */,
+				41D49825F8F68CA2E221F3FB /* Pods-Freegan.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -171,7 +261,14 @@
 		D8C224C17A03CC8C3967AF29 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1690BF996CD58D5B330B36D7 /* Pods_Freegan.framework */,
+				0FAD4BAB1FA912370034E766 /* ImageIO.framework */,
+				0F06B4011FA82B4600C582A2 /* CoreData.framework */,
+				0F4FA1E21FA3F2F40051669D /* MobileCoreServices.framework */,
+				0F4FA1CA1FA19E950051669D /* MBProgressHUD.framework */,
+				0FB8ABFA1F9D3C1400C5C697 /* PushKit.framework */,
+				0FB8ABF81F9D3BF600C5C697 /* SystemConfiguration.framework */,
+				0FB8ABF61F9D3BB500C5C697 /* CoreLocation.framework */,
+				214FE02A51EAA1F73B23971D /* Pods_Freegan.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -183,12 +280,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0F9691821F3397C100802C57 /* Build configuration list for PBXNativeTarget "Freegan" */;
 			buildPhases = (
-				ED20326C64CCE31D5FAA6609 /* [CP] Check Pods Manifest.lock */,
+				6CE77AE0A40D54838D86ADFA /* [CP] Check Pods Manifest.lock */,
 				0F96916C1F3397C100802C57 /* Sources */,
 				0F96916D1F3397C100802C57 /* Frameworks */,
 				0F96916E1F3397C100802C57 /* Resources */,
-				526926D058795DD16D2551BE /* [CP] Embed Pods Frameworks */,
-				2FCA8E20D901231C54A2A712 /* [CP] Copy Pods Resources */,
+				235B89A97D050EE5FC4E8B0E /* [CP] Embed Pods Frameworks */,
+				0FDED3BAC193C6B0817DBCEF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -211,6 +308,7 @@
 				TargetAttributes = {
 					0F96916F1F3397C100802C57 = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Manual;
 					};
 				};
@@ -248,7 +346,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2FCA8E20D901231C54A2A712 /* [CP] Copy Pods Resources */ = {
+		0FDED3BAC193C6B0817DBCEF /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -263,7 +361,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Freegan/Pods-Freegan-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		526926D058795DD16D2551BE /* [CP] Embed Pods Frameworks */ = {
+		235B89A97D050EE5FC4E8B0E /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -278,7 +376,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Freegan/Pods-Freegan-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		ED20326C64CCE31D5FAA6609 /* [CP] Check Pods Manifest.lock */ = {
+		6CE77AE0A40D54838D86ADFA /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -302,20 +400,31 @@
 			files = (
 				0F2517221F4240BD0085D1E8 /* ProfileVC.swift in Sources */,
 				0F07260F1F3AAEE800EE805C /* User.swift in Sources */,
+				0F6C65391FAFD29B00E20B30 /* EditPostItemVC.swift in Sources */,
+				0FB8ABE41F9B042300C5C697 /* ChatViewController.swift in Sources */,
 				0F90154D1F37BCBB004F96ED /* CircleView.swift in Sources */,
 				0F9015401F34109F004F96ED /* FancyField.swift in Sources */,
-				0F2517261F43884B0085D1E8 /* TVCChat.swift in Sources */,
+				0F0D362B1FA036AA0053558E /* Encryption.swift in Sources */,
+				0F6C65371FAFD22B00E20B30 /* MyPostsTableViewController.swift in Sources */,
 				0F90154B1F3681F1004F96ED /* Post.swift in Sources */,
-				0F2517241F42985A0085D1E8 /* Chat.swift in Sources */,
+				0F6C653B1FB02DBB00E20B30 /* EditPostTableViewCell.swift in Sources */,
+				0F4FA1DA1FA262110051669D /* MBProgressHUD.m in Sources */,
+				0FB8ABE01F9B003200C5C697 /* Utilities.swift in Sources */,
 				0F9691761F3397C100802C57 /* SignInVC.swift in Sources */,
 				0F90153E1F340D46004F96ED /* RoundBtn.swift in Sources */,
+				0FB8AC011F9E972100C5C697 /* Recent.swift in Sources */,
 				0F9691741F3397C100802C57 /* AppDelegate.swift in Sources */,
 				0F9015441F34EFCD004F96ED /* FeedVC.swift in Sources */,
+				0FB8ABFF1F9D4F6C00C5C697 /* RecentTableViewCell.swift in Sources */,
+				0F0D36261FA036510053558E /* RNCryptor.swift in Sources */,
 				0F9015461F3526AA004F96ED /* PostCell.swift in Sources */,
 				0F9015391F34096A004F96ED /* FancyView.swift in Sources */,
+				0FB8AC051F9EA4AF00C5C697 /* IncomingMessage.swift in Sources */,
 				0F90153C1F340ABC004F96ED /* Constants.swift in Sources */,
 				0F9015421F341180004F96ED /* FancyBtn.swift in Sources */,
-				0F2517201F423BE40085D1E8 /* ContactGvVC.swift in Sources */,
+				0F4FA1E11FA3F2D40051669D /* Camera.swift in Sources */,
+				0FB8ABFD1F9D4E8900C5C697 /* RecentViewController.swift in Sources */,
+				0FB8AC031F9E978700C5C697 /* OutgoingMessage.swift in Sources */,
 				0F9015491F3530D2004F96ED /* DataService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -447,17 +556,25 @@
 		};
 		0F9691831F3397C100802C57 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E958B4EAEC160AC98F9C1CF5 /* Pods-Freegan.debug.xcconfig */;
+			baseConfigurationReference = BDEB1C9AC96DDC79F6144125 /* Pods-Freegan.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
+				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
+				ENABLE_BITCODE = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = Freegan/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				NEW_SETTING = "";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.planetpeopleplatform.Freegan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Freegan/Freegan-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -465,17 +582,24 @@
 		};
 		0F9691841F3397C100802C57 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E86A8EAB41CA0312971C0618 /* Pods-Freegan.release.xcconfig */;
+			baseConfigurationReference = 41D49825F8F68CA2E221F3FB /* Pods-Freegan.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
+				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
+				ENABLE_BITCODE = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = Freegan/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				NEW_SETTING = "";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.planetpeopleplatform.Freegan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Freegan/Freegan-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
